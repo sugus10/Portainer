@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://portainer.github.io/k8s/
     chart: portainer
-    targetRevision: 1.0.50   # use helm search repo portainer to confirm latest
+    targetRevision: 1.0.50   # or check latest with `helm search repo portainer`
     helm:
       values: |
         service:
@@ -18,9 +18,7 @@ spec:
           ingressClassName: traefik
           hosts:
             - host: port.thesugu.com
-              paths:
-                - /
-          tls: []
+              path: /
   destination:
     namespace: portainer
     server: https://kubernetes.default.svc
