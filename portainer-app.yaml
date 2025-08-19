@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://portainer.github.io/k8s/
     chart: portainer
-    targetRevision: 1.0.50   # (check latest version)
+    targetRevision: 1.0.50   # you can bump this to the latest version
     helm:
       values: |
         service:
@@ -19,7 +19,8 @@ spec:
           hosts:
             - host: port.thesugu.com
               paths:
-                - /
+                - path: /
+                  pathType: Prefix
   destination:
     namespace: portainer
     server: https://kubernetes.default.svc
@@ -27,4 +28,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-
